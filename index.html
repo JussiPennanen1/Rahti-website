@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Services - Week 3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #111;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      margin: 15px 0 25px 0;
+      display: block;
+    }
+    p {
+      margin-bottom: 1em;
+    }
+    hr {
+      margin: 30px 0;
+      border: 0;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cloud Services - Week 3</h1>
+  <p><strong>GitHub Repository:</strong> <a href="https://github.com/JussiPennanen1">https://github.com/JussiPennanen1</a></p>
+
+  <hr>
+
+  <h2>1. Describe reasons why so many companies are using cloud based email and calendar services.</h2>
+  <p>Cloud-based email is an internet-based service, which is hosted and accessed online.  Service providers monitor and back up the email network, so there is no need for physical server hardware and ongoing server maintenance like in on-premises services. Key benefits of using cloud-based services include cost savings, increased uptime, scalability, remote access, and improved security.</p>
+  <p>Paying a monthly subscription fee to a provider (Gmail, Outlook, ProtonMail) will likely be cheaper than maintain your own hardware. Unlike on-premises setups where a local server crash takes down email, cloud services keep communication online during local outages. Scaling is also easier without a need to invest in any expensive infrastructure. Tailored storage capacity and user count are easy to set up for your needs. Also, for small businesses security is typically better in cloud, since large corporations can use more resources toward securing your data than you can alone. Remote access is also much simpler.</p>
+  <p>1. <a href="https://www.comms-unite.co.uk/news/understanding-cloud-based-email/">https://www.comms-unite.co.uk/news/understanding-cloud-based-email/</a></p>
+
+  <hr>
+
+  <h2>4. Compare few cloud data storage provider features and pricing (either for home users or for enterprises)</h2>
+  <p>For comparison, Google Drive, Dropbox, and OneDrive have been selected.</p>
+  <p>Google Drive offers the most free storage with 15 GB per user. Starting prices for 100GB begin only from 1,99$ per month. Capacity can be extended up to 30 TB, and the number of connected devices is unlimited. Multiple people can edit the same document simultaneously in real time. The interface has quite a lot of features, which can be overwhelming at first. For privacy-oriented users, Google holds the encryption keys, so technically they can access your files if required by law.</p>
+  <p>Dropbox offers 2 GB for free users and can be extended to 3 TB for 16,58$ a month. It stands out primarily for its file-sharing and sync capabilities. Block-level sync means the service only uploads the changed portions of a file, not the entire file. This can be useful for video editors or anyone working with large assets. The interface is said to be one of the cleanest in industry, avoiding unnecessary toolsets.</p>
+  <p>For free users, OneDrive offers 5 GB of free storage and can be increased up to 1 TB for one user for 9,99$ a month. The service integrates well into Windows 11, syncing many folders automatically without manual configuration. Protecting certain folders with additional identity verification, such as SMS or authenticator app, is possible, which locks the folder after 20 minutes of inactivity.</p>
+  <p>1. <a href="https://www.tomsguide.com/buying-guide/best-cloud-storage">https://www.tomsguide.com/buying-guide/best-cloud-storage</a></p>
+
+  <hr>
+
+  <h2>3. Select and describe 2-3 well-known Amazon S3 data leak incidents. What went wrong? List some automated S3 bucket search engines and attack tools.</h2>
+  <p>In the capital one hack, former Amazon employee stole over 100 million consumer applications for credit from Capital One. The reason was misconfigured open-source Web Application Firewall (WAF). Attacker exploited a Server-Side Request Forgery (SSRF) vulnerability, in which a server can be tricked into running commands that it should not be permitted to run. Misconfiguration allowed intruder to trick the firewall into relaying requests to a key back-end resource (metadata) on the AWS platform. WAF was assigned too many permissions, allowing to list all of the files in any buckets of data, and to read the contents of each of those files. The intruder used those credentials to exfiltrate massive amounts of customer data [1].</p>
+  <p>In 2017, a cyber risk team discovered that four Amazon Web Services S3 storage buckets belonging to Accenture were left unsecured and publicly downloadable to anyone who entered the buckets web addresses into their internet browser. Buckets contained cloud platform credentials and configurations, such as internal API configurations, production VPN keys, decryption keys and private SSL signing certificates. Also about 40 000 passwords plaintext passwords were available. To secure the buckets, a simple password requirement for each bucket would have worked[2].</p>
+  <p>Amazon S3 bucket scanners are typically used for asset discovery, penetration testing and security assessment by security professionals. Popular bucket scanners include AWSBucketDump, BuQuikker, Bucket Finder and S3Scanner [3]. Many different tools for attacking exist. Attackers can overwrite stored assets, enabling them to deface websites or distribute malicious payloads to end users. These exploitation scripts can inject malicious JavaScript directly into site code to steal sensitive information or hijack visitors’ machines for in-browser crypto mining. Attackers can also encrypt bucket files for extortion [4].</p>
+  <p>1. <a href="https://krebsonsecurity.com/2019/08/what-we-can-learn-from-the-capital-one-hack/">https://krebsonsecurity.com/2019/08/what-we-can-learn-from-the-capital-one-hack/</a><br>
+  2. Accenture Exposed Data via Unprotected Cloud Storage Bucket<br>
+  3. <a href="https://linuxsecurity.expert/security-tools/amazon-s3-bucket-scanners">https://linuxsecurity.expert/security-tools/amazon-s3-bucket-scanners</a><br>
+  4. <a href="https://dl.acm.org/doi/10.1145/3274694.3274736">https://dl.acm.org/doi/10.1145/3274694.3274736</a></p>
+
+  <hr>
+
+  <h2>4. What would a mid-size company store to the Amazon Glacier? What not? Why? What other large cloud backup or mass storage providers are there?</h2>
+  <p>When companies grow, the amount of data tends to increase rapidly. Organizations often need to retain backups for business or disaster recovery and also for different kinds of records. As the volume of data grows, optimization of costs should be done.</p>
+  <p>Amazon S3 offers four storage classes designed to lower cost for archiving data, and selecting the right one requires some key considerations. Based on the data access patterns, the time to access files can take from milliseconds up to 48 hours. This depends if the data is rarely accessed, but still needs immediate access, or you need to retain the data for decades, but access is allowed to take several hours. Unlike storage where files are accessed synchronously, certain Glacier tiers require an asynchronous RestoreObject request before the data can be downloaded. Workflows have to be designed to accommodate retrieval wait times ranging from minutes up to 48 hours. Objective count and file sizes also affect costs, since small files have high transition fees and a mandatory 40KB metadata storage overhead per object, which is a small fraction for larger objects. Small files should be aggregated into larger archives, such as TAR bundles, before moving to Glacier, cutting efficiently transition costs and eliminating per-object metadata overhead. Also, large restores should be requested in chronological order based on the object creation times to avoid severe daily throughput limits placed on random requests [1].</p>
+  <p>For a small and medium-sized balancing between the correct option is vital for the budget. Amazon S3 Glacier is a viable option since it is designed for long-term data retention at a low cost. It is intended for data that is not accessed often, but must be stored securely, such as record, backup files and different documents. In other words, it trades off speed for savings. Compared to other Amazon S3 storage classes, it pills significantly less per stored GB. Companies that use Glacier can be healthcare related, storing medical imaging files, audit logs and compliance archives. Generally other files can be, monthly backups, quarterly backups, financial records, historical trial data and many more possibilities [2].</p>
+  <p>Although storing data is cheap in Glacier, for day-to-day storage it is not. Glacier is “cold storage” solution, meaning storing data for long periods of time, often years. There is a minimum time period of 90 to 180 days for cold data storage. If that is not reached or data is changed before that date, Amazon charges for an early deletion fee, which could be over half for what you paid for the storage itself. Also retrieving the data immediately is costly, so if you need that data instantly other solutions might be better [2].</p>
+  <p>Alternatives as a major mass storage for Glacier include Microsoft Azure Blob Storage, Google Cloud Storage and Backblaze B2. Google and Microsoft offer similar classes with retrieval delays and data retention as Glacier. Backblaze is designed as a single-tier solution, no matter how often you need to access it [3].</p>
+  <p>1. <a href="https://aws.amazon.com/blogs/storage/best-practices-for-archiving-large-datasets-with-aws/">https://aws.amazon.com/blogs/storage/best-practices-for-archiving-large-datasets-with-aws/</a><br>
+  2. <a href="https://cloudtech.com/resources/understanding-aws-s3-glacier-storage-long-term-data">https://cloudtech.com/resources/understanding-aws-s3-glacier-storage-long-term-data</a><br>
+  3. <a href="https://www.starwindsoftware.com/blog/aws-vs-azure-vs-google-cloud-vs-backblaze-b2-vs-wasabi/">https://www.starwindsoftware.com/blog/aws-vs-azure-vs-google-cloud-vs-backblaze-b2-vs-wasabi/</a></p>
+
+  <hr>
+
+  <h2>Assignment 2</h2>
+  <p>1. Meda asset was uploaded to bucket on CSC Allas object storage.</p>
+  <img src="https://a3s.fi/week3assignment/phase1.png" alt="Phase 1">
+
+  <p>2. HTML references the extern Allas storage, rather than storing the file locally.</p>
+  <img src="https://a3s.fi/week3assignment/phase2.png" alt="Phase 2">
+
+  <p>3. External route was created in Rahti to expose the containerized web app to the public internet. The only difficulty during deployment was selecting the correct NGINX builder image from the catalog.</p>
+  <img src="https://a3s.fi/week3assignment/phase3.png" alt="Phase 3">
+
+  <p>4. Deployed webpage loads via Rahti while pulling and rendering the decoupled image from Allas.</p>
+  <img src="https://a3s.fi/week3assignment/eneskoc360-milky-way-8534163_1920.jpg" alt="Phase 4 Milky Way">
+
+</body>
+</html>
